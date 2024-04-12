@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Light_Controller : MonoBehaviour
 {
+    public GameObject lightControlObject;
     public Light pointLight;
     public float color;
     public Slider colorSlider;
@@ -37,6 +38,8 @@ public class Light_Controller : MonoBehaviour
     }
     void ChangeDistance(float newDistance)
     {
-        pointLight.range = newDistance;
+        Vector3 newPosition = lightControlObject.transform.position;
+        newPosition.z = newDistance;
+        lightControlObject.transform.position = newPosition;
     }
 }

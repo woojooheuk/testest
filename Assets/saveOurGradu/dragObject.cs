@@ -16,9 +16,10 @@ public class dragObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = GetMouseWorldPosition() + m_Offset;
+        Vector3 newPos = GetMouseWorldPosition() + m_Offset;
+        newPos.z = transform.position.z;
+        transform.position = newPos;
     }
-
     Vector3 GetMouseWorldPosition()
     {
         Vector3 mousePoiont = Input.mousePosition;
