@@ -5,29 +5,14 @@ using UnityEngine.UI;
 
 public class Material_Controller : MonoBehaviour
 {
-    public GameObject targetObject;
     public Material[] exampleMat = new Material[2];
-    private int i;
 
-    // 각 버튼 클릭 시 호출될 함수
-    public void ChangeMaterial(Button clickedButton)
+    int i = 0;
+
+    public void ChangeMat()
     {
-        Debug.Log("?2");
-        string buttonTag = clickedButton.tag;
-        Renderer renderer = targetObject.GetComponent<Renderer>();
-        switch (clickedButton.tag)
-        {
-            case "Mat1":
-                i = 0;
-                break;
+        i = ++i % 2;
 
-            case "Mat2":
-                i = 1;
-                Debug.Log("?");
-                break;
-
-        }
-
-        renderer.material = exampleMat[i];
+        gameObject.GetComponent<MeshRenderer>().material = exampleMat[i];
     }
 }

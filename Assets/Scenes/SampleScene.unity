@@ -537,6 +537,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2141964833}
+        m_TargetAssemblyTypeName: Material_Controller, Assembly-CSharp
+        m_MethodName: ChangeMat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 970042412}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1330,6 +1342,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2141964833}
+        m_TargetAssemblyTypeName: Material_Controller, Assembly-CSharp
+        m_MethodName: ChangeMat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 970042412}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1346,18 +1370,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: f2b588a452e55e84582436a8ab7146ef, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1997,7 +2009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b588a452e55e84582436a8ab7146ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 2141964828}
   exampleMat:
   - {fileID: 2100000, guid: 70b20460d90cf6849a86c0894743f171, type: 2}
   - {fileID: 2100000, guid: 10605b694fa01c742b6fb45e5d460b26, type: 2}
@@ -2944,6 +2955,7 @@ GameObject:
   - component: {fileID: 2141964831}
   - component: {fileID: 2141964830}
   - component: {fileID: 2141964829}
+  - component: {fileID: 2141964833}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3038,6 +3050,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 89.764, y: -91.535, z: 88.449}
+--- !u!114 &2141964833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141964828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b588a452e55e84582436a8ab7146ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exampleMat:
+  - {fileID: 2100000, guid: 70b20460d90cf6849a86c0894743f171, type: 2}
+  - {fileID: 2100000, guid: 10605b694fa01c742b6fb45e5d460b26, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
