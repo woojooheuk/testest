@@ -182,3 +182,4 @@ point_cloud = depth_map_to_point_cloud(depth_map)
 
 # 시각화
 o3d.visualization.draw_geometries([point_cloud])
+print("ㅎㅇ")
