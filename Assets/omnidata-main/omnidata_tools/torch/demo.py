@@ -14,6 +14,8 @@ import glob
 import sys
 
 import pdb
+import socket
+import pickle
 
 from modules.unet import UNet
 from modules.midas.dpt_depth import DPTDepthModel
@@ -150,7 +152,25 @@ def save_outputs(img_path, output_file_name):
             trans_topil(output[0]).save(save_path)
             
         print(f'Writing output {save_path} ...')
+        
+        send_image_to_unity(save_path)
 
+def send_image_to_unity(image_path):
+    #서버 주소 포트 설정
+    HOST = '127.0.0.1'
+    PORT = 80
+    
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+    client_socket.connect((HOST), PORT)
+    
+    with open(image_path, 'rb') as file:
+        image_data = file.read()
+        image_size = len(image_data)
+        print(f"Sending image to Unity: {image_size} bytes")
+        client_socket.sendall(image_data)
+        
+    client_socket.close()
 
 img_path = Path(args.img_path)
 if img_path.is_file():
