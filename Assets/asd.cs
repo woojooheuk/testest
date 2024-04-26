@@ -26,6 +26,7 @@ public class asd : MonoBehaviour
         process.WaitForExit();
 
         // 실행 결과 출력
+
         UnityEngine.Debug.Log(result);
 
         SendAndReceiveImage();
@@ -49,6 +50,7 @@ public class asd : MonoBehaviour
                     stream.Write(imgData, 0, imgData.Length);
                 }
             }
+            https://artsung410.tistory.com/100
         */
             //이미지 수신
             using (TcpClient client = new TcpClient(serverIP, port))
