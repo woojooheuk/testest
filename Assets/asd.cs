@@ -14,64 +14,59 @@ public class asd : MonoBehaviour
         // 터미널 명령 준비
         string command = $"python {pythonScriptPath} --task normal --img_path {imgPath} --output_path {outputPath}";
         // 프로세스 생성
-        Process process = new Process();
-        process.StartInfo.FileName = "cmd.exe"; // Windows 운영 체제를 사용하는 경우
-        process.StartInfo.Arguments = command;
-        process.StartInfo.UseShellExecute = false;
-        process.StartInfo.RedirectStandardOutput = true;
+        ProcessStartInfo start = new ProcessStartInfo();
+        start.FileName = "cmd.exe"; // Windows 운영 체제를 사용하는 경우
+        start.Arguments = command;
+        start.UseShellExecute = false;
+        start.RedirectStandardOutput = true;
         // 프로세스 시작
-        process.Start();
-        // 실행 결과 읽기
-        string result = process.StandardOutput.ReadToEnd();
-        process.WaitForExit();
+        using (Process process = Process.Start(start))
+        {
+            using(StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                UnityEngine.Debug.Log(result);
+            }
+        }
 
-        // 실행 결과 출력
-
-        UnityEngine.Debug.Log(result);
-
-        SendAndReceiveImage();
     }
 
-    void SendAndReceiveImage()
+}
+
+//이 느낌으로 그냥 파이썬에서 생성하고 유니티에서 인식시키는 거도 될듯
+/*
+ * using UnityEngine;
+
+public class ImageLoader : MonoBehaviour
+{
+    public Material imageMaterial; // 이미지를 표시할 Material
+
+    void Start()
     {
-        try
+        LoadImage();
+    }
+
+    void LoadImage()
+    {
+        string imagePath = "file://" + Application.dataPath + "/test_image.png"; // 이미지 파일 경로
+        StartCoroutine(LoadTexture(imagePath));
+    }
+
+    IEnumerator LoadTexture(string imagePath)
+    {
+        WWW www = new WWW(imagePath);
+        yield return www;
+
+        Texture2D texture = www.texture;
+
+        if (texture != null)
         {
-            string serverIP = "127.0.0.1";
-            int port = 80;
-            /* 이미지 전송
-            using (TcpClient client = new TcpClient(serverIP, port))
-            {
-                using(NetworkStream stream = client.GetStream())
-                {
-                    byte[] imgData = File.ReadAllBytes(Path.Combine(outputPath, "output_normal.png"));
-
-                    stream.Write(BitConverter.GetBytes(imgData.Length), 0, 4);
-
-                    stream.Write(imgData, 0, imgData.Length);
-                }
-            }
-            https://artsung410.tistory.com/100
-        */
-            //이미지 수신
-            using (TcpClient client = new TcpClient(serverIP, port))
-            {
-                using (NetworkStream stream = client.GetStream())
-                {
-                    byte[] imgSizeBytes = new byte[4];
-                    stream.Read(imgSizeBytes, 0, 4);
-                    int imSize = BitConverter.ToInt32(imgSizeBytes, 0);
-
-                    byte[] imgData = new byte[imSize];
-                    stream.Read(imgData, 0, imSize);
-
-                    File.WriteAllBytes(Path.Combine(outputPath, "received_image.png"), imgData);
-                }
-            }
-            UnityEngine.Debug.Log("이미지 수신 완료");
+            imageMaterial.mainTexture = texture;
         }
-        catch(System.Exception e)
+        else
         {
-            UnityEngine.Debug.Log($"에러:{e.Message}");
-        }    
+            Debug.LogError("이미지를 불러올 수 없습니다.");
+        }
     }
 }
+ */
