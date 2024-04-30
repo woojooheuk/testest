@@ -23,7 +23,6 @@ public class test : MonoBehaviour
             using (StreamReader reader = process.StandardOutput)
             {
                 string result = reader.ReadToEnd();
-                UnityEngine.Debug.Log("Python 출력: " + result); // 결과를 Unity 콘솔에 출력
             }
         }
     }
