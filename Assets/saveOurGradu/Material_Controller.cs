@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Material_Controller : MonoBehaviour
 {
     public Material[] exampleMat = new Material[2];
-
     int i = 0;
 
     public void ChangeMat()

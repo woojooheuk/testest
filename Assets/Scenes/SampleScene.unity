@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &312024491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1265,7 +1265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &970042413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1717,8 +1717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightControlObject: {fileID: 263989529}
   pointLight: {fileID: 2123282552}
-  color: 0
-  colorSlider: {fileID: 0}
   intensity: 0
   intensitySlider: {fileID: 1439850812}
   range: 0
@@ -1920,7 +1918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1471845143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2079,7 +2077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1500535887}
-  - component: {fileID: 1500535886}
+  - component: {fileID: 1500535888}
   m_Layer: 0
   m_Name: matController
   m_TagString: Untagged
@@ -2087,21 +2085,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1500535886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500535885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2b588a452e55e84582436a8ab7146ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exampleMat:
-  - {fileID: 2100000, guid: 70b20460d90cf6849a86c0894743f171, type: 2}
-  - {fileID: 2100000, guid: 10605b694fa01c742b6fb45e5d460b26, type: 2}
 --- !u!4 &1500535887
 Transform:
   m_ObjectHideFlags: 0
@@ -2117,6 +2100,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500535888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500535885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b588a452e55e84582436a8ab7146ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exampleMat:
+  - {fileID: 2100000, guid: 70b20460d90cf6849a86c0894743f171, type: 2}
+  - {fileID: 2100000, guid: 10605b694fa01c742b6fb45e5d460b26, type: 2}
 --- !u!1 &1648262599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,7 +2505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1867149588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2612,6 +2610,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1500535888}
+        m_TargetAssemblyTypeName: Material_Controller, Assembly-CSharp
+        m_MethodName: ApplyCopiedMat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2862,6 +2872,7 @@ MonoBehaviour:
   originalMat: {fileID: 2100000, guid: 8ee304006ac81ba418d52797ded26f77, type: 2}
   baseTexture: {fileID: 2800000, guid: 0e3d92951256aab459ff6c13a3eacaf4, type: 3}
   normalTexture: {fileID: 2800000, guid: 25ef9cbc115436b458ba247c8f471257, type: 3}
+  matPath: Assets/Materials/
 --- !u!1 &2025467211
 GameObject:
   m_ObjectHideFlags: 0

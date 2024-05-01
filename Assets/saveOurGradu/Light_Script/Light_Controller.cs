@@ -7,8 +7,6 @@ public class Light_Controller : MonoBehaviour
 {
     public GameObject lightControlObject;
     public Light pointLight;
-    public float color;
-    public Slider colorSlider;
 
     public float intensity;
     public Slider intensitySlider;

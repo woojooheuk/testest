@@ -12,9 +12,12 @@ public class MaterialMaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         MakeMat();
-        applyButtonMat();
+    }
+
+    void Setting()
+    {
+
     }
 
     void MakeMat()
@@ -29,7 +32,7 @@ public class MaterialMaker : MonoBehaviour
 
         copiedMat.name = "RelightExample";
 
-        if(baseTexture != null)
+        if (baseTexture != null)
             copiedMat.SetTexture("_BaseMap", baseTexture);
 
         if (normalTexture != null)
@@ -37,17 +40,10 @@ public class MaterialMaker : MonoBehaviour
             copiedMat.SetTexture("_BumpMap", normalTexture);
             copiedMat.EnableKeyword("_NORMALMAP");
         }
-        string path = "Assets/Materials/copied.mat";
+        string path = "Assets/Resources/copied.mat";
         AssetDatabase.CreateAsset(copiedMat, path);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
-    }
-
-    void applyButtonMat()
-    {
-        Material copymat = Resources.Load<Material>(matPath + "copied.mat");
-        Image userPic = GetComponent<Image>();
-        userPic.material = copymat;
     }
 }
