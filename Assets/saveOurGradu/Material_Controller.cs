@@ -14,4 +14,6 @@ public class Material_Controller : MonoBehaviour
 
         gameObject.GetComponent<MeshRenderer>().material = exampleMat[i];
     }
+
+    //public void Apply
 }

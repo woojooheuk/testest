@@ -8,7 +8,7 @@ public class MaterialMaker : MonoBehaviour
     public Material originalMat;
     public Texture2D baseTexture;
     public Texture2D normalTexture;
-    public string matPath = "Assets/Materials/";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class MaterialMaker : MonoBehaviour
 
     void Setting()
     {
-
+        baseTexture = Resources.Load<Texture2D>("C:/Users/10Group/Documents/GitHub/testest/Assets/Resources/Images/KakaoTalk_20240502_154951629.jpg");
     }
 
     void MakeMat()

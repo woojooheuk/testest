@@ -1,6 +1,8 @@
 from PIL import Image
 from imaginairy_normal_map.model import create_normal_map_pil_img
 
-img = Image.open("D:/Minecraft_Plugins/testest/Assets/plz.jpeg")
+imagePath= "C:/Users/10Group/Documents/GitHub/testest/Assets/Resources/Images/KakaoTalk_20240502_154951629.jpg"
+img = Image.open(imagePath) #원본
 normal_img = create_normal_map_pil_img(img)
-normal_img.save("D:/Minecraft_Plugins/testest/Assets/plz_normal.jpeg")
+divide = imagePath.split('.')
+normal_img.save(divide[0] + "_normal." + divide[1]) #생성본
