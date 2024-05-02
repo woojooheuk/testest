@@ -5,19 +5,22 @@ using UnityEditor;
 using UnityEngine.UI;
 public class MaterialMaker : MonoBehaviour
 {
-    public Material originalMat;
-    public Texture2D baseTexture;
-    public Texture2D normalTexture;
+    private Material originalMat;
+    private Texture2D baseTexture;
+    private Texture2D normalTexture;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        MakeMat();
+        Setting();
     }
 
     void Setting()
     {
-        baseTexture = Resources.Load<Texture2D>("C:/Users/10Group/Documents/GitHub/testest/Assets/Resources/Images/KakaoTalk_20240502_154951629.jpg");
+        originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
+        baseTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629");
+        normalTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629_normal");
+        MakeMat();
     }
 
     void MakeMat()
@@ -40,10 +43,12 @@ public class MaterialMaker : MonoBehaviour
             copiedMat.SetTexture("_BumpMap", normalTexture);
             copiedMat.EnableKeyword("_NORMALMAP");
         }
-        string path = "Assets/Resources/copied.mat";
+        string path = "Assets/Resources/Materials/copied.mat";
         AssetDatabase.CreateAsset(copiedMat, path);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
     }
+
 }
+
