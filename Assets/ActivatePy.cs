@@ -11,10 +11,9 @@ public class ActivatePy : MonoBehaviour
 
     void RunPythonScript()
     {
-       string sendImagePath = "Gallary";
         ProcessStartInfo start = new ProcessStartInfo();
         start.FileName = "python"; // Python 실행 파일
-        start.Arguments = Path.Combine(Application.dataPath, "qwe.py") + "\"" + sendImagePath + "\""; // 파이썬 스크립트-
+        start.Arguments = Path.Combine(Application.dataPath, "qwe.py"); // 파이썬 스크립트-
         start.UseShellExecute = false;
         start.RedirectStandardOutput = true;
         start.RedirectStandardError = true;
