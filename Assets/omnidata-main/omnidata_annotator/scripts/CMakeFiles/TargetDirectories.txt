@@ -1,3 +1,0 @@
-/app/scripts/CMakeFiles/edit_cache.dir
-/app/scripts/CMakeFiles/rebuild_cache.dir
-/app/scripts/CMakeFiles/narf_interest_image.bin.dir

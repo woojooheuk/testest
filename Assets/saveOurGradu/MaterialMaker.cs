@@ -10,20 +10,36 @@ public class MaterialMaker : MonoBehaviour
     private Texture2D normalTexture;
 
     // Start is called before the first frame update
-    public void Start()
+    private void Start()
     {
         Setting();
     }
-
-    void Setting()
+    public void Setting()
     {
         originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
+        //밑에 이미지 주소들 변수화 시킬것
         baseTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629");
         normalTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629_normal");
-        MakeMat();
+        ChangeTextureShapeNormalmap(normalTexture);
+        
+        MakeMat(baseTexture, normalTexture);
     }
 
-    void MakeMat()
+    void ChangeTextureShapeNormalmap(Texture2D texture)
+    {
+        string assetPath = AssetDatabase.GetAssetPath(texture);
+        if (!string.IsNullOrEmpty(assetPath))
+        {
+            TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+            if (importer != null)
+            {
+                importer.textureType = TextureImporterType.NormalMap;
+                importer.SaveAndReimport();
+            }
+        }
+
+    }
+    void MakeMat(Texture2D Base, Texture2D Normal)
     {
         if (originalMat == null)
         {
@@ -36,11 +52,11 @@ public class MaterialMaker : MonoBehaviour
         copiedMat.name = "RelightExample";
 
         if (baseTexture != null)
-            copiedMat.SetTexture("_BaseMap", baseTexture);
+            copiedMat.SetTexture("_BaseMap", Base);
 
         if (normalTexture != null)
         {
-            copiedMat.SetTexture("_BumpMap", normalTexture);
+            copiedMat.SetTexture("_BumpMap", Normal);
             copiedMat.EnableKeyword("_NORMALMAP");
         }
         string path = "Assets/Resources/Materials/copied.mat";
