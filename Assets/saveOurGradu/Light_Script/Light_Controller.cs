@@ -28,6 +28,7 @@ public class Light_Controller : MonoBehaviour
     void ChangeIntensity(float newIntensity)
     {
         pointLight.intensity = newIntensity;
+        pointLight.range = newIntensity;
     }
 
     void ChangeRange(float newRange)

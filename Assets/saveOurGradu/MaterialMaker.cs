@@ -8,7 +8,7 @@ public class MaterialMaker : MonoBehaviour
     private Material originalMat;
     private Texture2D baseTexture;
     private Texture2D normalTexture;
-
+    private int set = 0;
     // Start is called before the first frame update
     private void Start()
     {
@@ -16,17 +16,21 @@ public class MaterialMaker : MonoBehaviour
     }
     public void Setting()
     {
-        originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
-        //밑에 이미지 주소들 변수화 시킬것
-        baseTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629");
-        normalTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629_normal");
-        ChangeTextureShapeNormalmap(normalTexture);
-        
-        MakeMat(baseTexture, normalTexture);
+        if (set == 0)
+        {
+            originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
+            //밑에 이미지 주소들 변수화 시킬것
+            baseTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629");
+            normalTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629_normal");
+            ChangeTextureShapeNormalmap(normalTexture);
+
+            MakeMat(baseTexture, normalTexture);
+        }
     }
 
     void ChangeTextureShapeNormalmap(Texture2D texture)
     {
+
         string assetPath = AssetDatabase.GetAssetPath(texture);
         if (!string.IsNullOrEmpty(assetPath))
         {
@@ -64,6 +68,7 @@ public class MaterialMaker : MonoBehaviour
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
+        set = 1;
     }
 
 }

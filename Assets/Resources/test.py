@@ -2,8 +2,6 @@ import os
 
 from PIL import Image
 from imaginairy_normal_map.model import create_normal_map_pil_img
-#imagePath = "D:/Minecraft_Plugins/testest/Assets/Resources/Images/KakaoTalk_20240502_154951629.jpg"
-#imagePath= "C:/Users/10Group/Documents/GitHub/testest/Assets/Resources/Images/KakaoTalk_20240502_154951629.jpg"
 
 #파이썬 파일 위치
 script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -11,12 +9,13 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 Txtfile_name = "TxtPath.txt"
 Txtfile_path = os.path.join(script_dir, Txtfile_name)
 
+Changed_script_dir = script_dir.replace("\\", "/")
 #갤러리 위치 값을 저장한 Txt파일 읽기
 with open(Txtfile_path, 'r') as file:
     lines = file.readlines()
-imagePath = lines
-divide = imagePath.split('.')    
-
+#용호가 갤러리에서 값을 어떻게 넘겨주는지 보고 변경할 것
+imagePath = Changed_script_dir + "/" + lines[0] + ".jpg"
+print(imagePath)
 #modified_lines = []
 #딱히 새로 txt파일 변경하는 게 아니라 그냥 넘겨도 될듯
 #for line in lines:

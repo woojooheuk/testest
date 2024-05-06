@@ -10,11 +10,12 @@ public class PathToTxt : MonoBehaviour
 
     public void TxtMaker()
     {
-            CreateTextFile(TxtPath);
+        CreateTextFile(TxtPath);
     }
 
     void CreateTextFile(string filePath)
     {
+        //여기도 갤러리 정보를 받든 뭘 하든 수정해야함
         File.WriteAllText(filePath, "Images/KakaoTalk_20240502_154951629");
         AssetDatabase.Refresh();
     }

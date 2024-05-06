@@ -18,3 +18,4 @@ else:
 with open(Txtfile_path, 'w') as file:
     file.writelines(modified_lines)
         
+print(script_dir + "\\")

@@ -2,18 +2,19 @@ using UnityEngine;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using UnityEditor;
 public class ActivatePy : MonoBehaviour
 {   
-    void Start()
+   /* void Start()
     {
         RunPythonScript();
     }
-
-    void RunPythonScript()
+   */
+    public void RunPythonScript()
     {
         ProcessStartInfo start = new ProcessStartInfo();
         start.FileName = "python"; // Python 실행 파일
-        start.Arguments = Path.Combine(Application.dataPath, "qwe.py"); // 파이썬 스크립트-
+        start.Arguments = Path.Combine(Application.dataPath,"Resources","test.py"); // 파이썬 스크립트-
         start.UseShellExecute = false;
         start.RedirectStandardOutput = true;
         start.RedirectStandardError = true;
@@ -25,6 +26,7 @@ public class ActivatePy : MonoBehaviour
             {
                 string result = reader.ReadToEnd();
                 UnityEngine.Debug.Log(result);
+                AssetDatabase.Refresh();
             }
         }
         
