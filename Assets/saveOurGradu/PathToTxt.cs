@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor;
 public class PathToTxt : MonoBehaviour
 {
-    //¿ëÈ£ Ãø¿¡¼­ ÀÌ ½ºÅ©¸³Æ®¸¦ ¸ÕÀú ½ÇÇàÇÏ¿© ½ºÅ©¸°¼¦ ÀÌ¹ÌÁö À§Ä¡¸¦ ³Ñ°ÜÁà¾ßÇÔ
+    //ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private string TxtPath = "Assets/Resources/TxtPath.txt";
 
     public void TxtMaker()
@@ -15,8 +15,8 @@ public class PathToTxt : MonoBehaviour
 
     void CreateTextFile(string filePath)
     {
-        //¿©±âµµ °¶·¯¸® Á¤º¸¸¦ ¹Þµç ¹» ÇÏµç ¼öÁ¤ÇØ¾ßÇÔ
-        File.WriteAllText(filePath, "Images/KakaoTalk_20240502_154951629");
+        //ï¿½ï¿½ï¿½âµµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þµï¿½ ï¿½ï¿½ ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
+        File.WriteAllText(filePath, "Images/KakaoTalk_20240507_115718762");
         AssetDatabase.Refresh();
     }
 

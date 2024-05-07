@@ -3,25 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using System.IO;
 public class MaterialMaker : MonoBehaviour
 {
     private Material originalMat;
     private Texture2D baseTexture;
     private Texture2D normalTexture;
     private int set = 0;
+    private string TxtPath = "Assets/Resources/TxtPath.txt";
     // Start is called before the first frame update
     private void Start()
     {
         Setting();
     }
+
+    public string ReadTextFile()
+    {
+       AssetDatabase.Refresh();
+       string imagePath = File.ReadAllText(TxtPath);
+       UnityEngine.Debug.Log(imagePath);
+       return imagePath;
+    }
     public void Setting()
     {
         if (set == 0)
         {
+            string ImagePath = ReadTextFile();
+            
             originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
-            //¹Ø¿¡ ÀÌ¹ÌÁö ÁÖ¼Òµé º¯¼öÈ­ ½ÃÅ³°Í
-            baseTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629");
-            normalTexture = Resources.Load<Texture2D>("Images/KakaoTalk_20240502_154951629_normal");
+            //ï¿½Ø¿ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ö¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½Å³ï¿½ï¿½
+            baseTexture = Resources.Load<Texture2D>(ImagePath);
+            normalTexture = Resources.Load<Texture2D>(ImagePath + "_normal");
             ChangeTextureShapeNormalmap(normalTexture);
 
             MakeMat(baseTexture, normalTexture);

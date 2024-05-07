@@ -11,9 +11,6 @@ public class Light_Controller : MonoBehaviour
     public float intensity;
     public Slider intensitySlider;
 
-    public float range;
-    public Slider rangeSlider;
-
     public float distance;
     public Slider distanceSlider;
 
@@ -21,7 +18,6 @@ public class Light_Controller : MonoBehaviour
     void Start()
     {
         intensitySlider.onValueChanged.AddListener(ChangeIntensity);
-        rangeSlider.onValueChanged.AddListener(ChangeRange);
         distanceSlider.onValueChanged.AddListener(ChangeDistance);
     }
 
@@ -31,10 +27,6 @@ public class Light_Controller : MonoBehaviour
         pointLight.range = newIntensity;
     }
 
-    void ChangeRange(float newRange)
-    {
-        pointLight.range = newRange;
-    }
     void ChangeDistance(float newDistance)
     {
         Vector3 newPosition = lightControlObject.transform.position;

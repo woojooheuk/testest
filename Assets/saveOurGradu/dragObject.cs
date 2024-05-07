@@ -24,7 +24,6 @@ public class dragObject : MonoBehaviour
     {
         Vector3 mousePoiont = Input.mousePosition;
         mousePoiont.z = m_ZCoord;
-        //z축 조정하는 거 만들어야됨. 빛 말고 오브젝트 위치를 조정하느 게 나을듯
         return Camera.main.ScreenToWorldPoint(mousePoiont);
     }
 }

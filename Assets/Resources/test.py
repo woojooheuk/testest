@@ -21,7 +21,8 @@ print(imagePath)
 #for line in lines:
 #    modified_line = line.replace(lines[1], divide[0] + "_normal." + divide[1])
 #    modified_lines.append(modified_line)
-    
+
+#노말맵이 이미 있으면 안만들고 파이썬 끝나게 수정할것
 img = Image.open(imagePath) #원본
 normal_img = create_normal_map_pil_img(img)
 divide = imagePath.split('.')
