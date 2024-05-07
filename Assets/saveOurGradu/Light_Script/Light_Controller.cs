@@ -6,12 +6,8 @@ using UnityEngine.UI;
 public class Light_Controller : MonoBehaviour
 {
     public GameObject lightControlObject;
-    public Light pointLight;
 
-    public float intensity;
     public Slider intensitySlider;
-
-    public float distance;
     public Slider distanceSlider;
 
     // Start is called before the first frame update
@@ -21,16 +17,45 @@ public class Light_Controller : MonoBehaviour
         distanceSlider.onValueChanged.AddListener(ChangeDistance);
     }
 
-    void ChangeIntensity(float newIntensity)
+    public void SetLastClickedObject(GameObject obj)
     {
-        pointLight.intensity = newIntensity;
-        pointLight.range = newIntensity;
+        lightControlObject = obj;
+
+        if(lightControlObject != null)
+        {
+            Light pointLight = lightControlObject.GetComponentInChildren<Light>();
+            if(pointLight != null)
+            {
+                intensitySlider.value = pointLight.intensity;
+                distanceSlider.value = lightControlObject.transform.position.z;
+            }
+        }
+    }
+    void ChangeIntensity(float newLightPower)
+    {
+        if (lightControlObject != null)
+        {
+            Light pointLight = lightControlObject.GetComponentInChildren<Light>();
+            if (pointLight != null)
+            {
+                pointLight.intensity = newLightPower;
+                pointLight.range = newLightPower;
+
+                intensitySlider.value = newLightPower;
+                
+            }
+        }
     }
 
     void ChangeDistance(float newDistance)
     {
-        Vector3 newPosition = lightControlObject.transform.position;
-        newPosition.z = newDistance;
-        lightControlObject.transform.position = newPosition;
+        if (lightControlObject != null)
+        {
+            Vector3 newPosition = lightControlObject.transform.position;
+            newPosition.z = newDistance;
+            lightControlObject.transform.position = newPosition;
+
+            distanceSlider.value = newDistance;
+        }
     }
 }

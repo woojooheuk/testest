@@ -40,7 +40,7 @@ public class MaterialMaker : MonoBehaviour
         }
     }
 
-    void ChangeTextureShapeNormalmap(Texture2D texture)
+    public void ChangeTextureShapeNormalmap(Texture2D texture)
     {
 
         string assetPath = AssetDatabase.GetAssetPath(texture);

@@ -11,7 +11,7 @@ public class changeColor : MonoBehaviour
     private Vector2 sizeOfPalette;
     private CircleCollider2D paletteCollider;
 
-    public Light pointLight;
+    public GameObject lastClickedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,10 @@ public class changeColor : MonoBehaviour
             );
     }
 
+    public void SetLastClickedObject(GameObject obj)
+    {
+        lastClickedObject = obj;
+    }
     public void mousePointerDown()
     {
         selecteColor();
@@ -58,6 +62,13 @@ public class changeColor : MonoBehaviour
 
         selectedColor = getColor();
 
-        pointLight.color = selectedColor;
+        if(lastClickedObject != null)
+        {
+            Light pointLight = lastClickedObject.GetComponentInChildren<Light>();
+            if(pointLight != null)
+            {
+                pointLight.color = selectedColor;
+            }
+        }
     }
 }

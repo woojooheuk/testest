@@ -11,9 +11,13 @@ public class dragObject : MonoBehaviour
     void Start()
     {
         m_ZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        m_Offset = gameObject.transform.position - GetMouseWorldPosition();
+
     }
 
+    private void OnMouseDown()
+    {
+        m_Offset = gameObject.transform.position - GetMouseWorldPosition();
+    }
     private void OnMouseDrag()
     {
         Vector3 newPos = GetMouseWorldPosition() + m_Offset;

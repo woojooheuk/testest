@@ -71,7 +71,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _intersectionDepth: 1.01
+    - _intersectionDepth: 6.96
     m_Colors:
-    - _intersectionColor: {r: 1.4677178, g: 1.4800975, b: 14.754423, a: 0.69411767}
+    - _intersectionColor: {r: 2.9998684, g: 0.8065683, b: 0.8065683, a: 1}
   m_BuildTextureStacks: []
