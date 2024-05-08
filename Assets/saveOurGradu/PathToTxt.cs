@@ -16,7 +16,7 @@ public class PathToTxt : MonoBehaviour
     void CreateTextFile(string filePath)
     {
         //���⵵ ������ ������ �޵� �� �ϵ� �����ؾ���
-        File.WriteAllText(filePath, "Images/KakaoTalk_20240507_115718762");
+        File.WriteAllText(filePath, "Images/plz");
         AssetDatabase.Refresh();
     }
 
