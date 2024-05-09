@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 using System.IO;
 
@@ -11,6 +12,7 @@ public class MaterialMaker : MonoBehaviour
     private Texture2D normalTexture;
     private int set = 0;
     private string TxtPath = "Assets/Resources/TxtPath.txt";
+    // Start is called before the first frame update
 
     private void Start()
     {
@@ -19,8 +21,9 @@ public class MaterialMaker : MonoBehaviour
 
     public string ReadTextFile()
     {
+        AssetDatabase.Refresh();
         string imagePath = File.ReadAllText(TxtPath);
-        Debug.Log(imagePath);
+        UnityEngine.Debug.Log(imagePath);
         return imagePath;
     }
 
@@ -29,11 +32,30 @@ public class MaterialMaker : MonoBehaviour
         if (set == 0)
         {
             string ImagePath = ReadTextFile();
+
             originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
+            //�ؿ� �̹��� �ּҵ� ����ȭ ��ų��
             baseTexture = Resources.Load<Texture2D>(ImagePath);
             normalTexture = Resources.Load<Texture2D>(ImagePath + "_normal");
+           // ChangeTextureShapeNormalmap(normalTexture);
+
             MakeMat(baseTexture, normalTexture);
         }
+    }
+    public void ChangeTextureShapeNormalmap(Texture2D texture)
+    {
+
+        string assetPath = AssetDatabase.GetAssetPath(texture);
+        if (!string.IsNullOrEmpty(assetPath))
+        {
+            TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+            if (importer != null)
+            {
+                importer.textureType = TextureImporterType.NormalMap;
+                importer.SaveAndReimport();
+            }
+        }
+
     }
 
     void MakeMat(Texture2D Base, Texture2D Normal)
@@ -45,6 +67,7 @@ public class MaterialMaker : MonoBehaviour
         }
 
         Material copiedMat = new Material(originalMat);
+
         copiedMat.name = "RelightExample";
 
         if (baseTexture != null)
@@ -55,10 +78,15 @@ public class MaterialMaker : MonoBehaviour
             copiedMat.SetTexture("_BumpMap", Normal);
             copiedMat.EnableKeyword("_NORMALMAP");
         }
+        string path = "Assets/Resources/Materials/copied.mat";
+        AssetDatabase.CreateAsset(copiedMat, path);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
 
         // 임시로 메모리에만 저장
         //GetComponent<Renderer>().material = copiedMat;
 
         set = 1;
     }
+
 }
