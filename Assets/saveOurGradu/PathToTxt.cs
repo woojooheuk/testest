@@ -17,7 +17,7 @@ public class PathToTxt : MonoBehaviour
     {
         //���⵵ ������ ������ �޵� �� �ϵ� �����ؾ���
         File.WriteAllText(filePath, "Images/plz");
-        AssetDatabase.Refresh();
+        //AssetDatabase.Refresh();
     }
 
 }
