@@ -26,7 +26,7 @@ public class ActivatePy : MonoBehaviour
             {
                 string result = reader.ReadToEnd();
                 UnityEngine.Debug.Log(result);
-                AssetDatabase.Refresh();
+              //  AssetDatabase.Refresh();
             }
         }
         

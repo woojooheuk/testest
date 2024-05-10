@@ -15,12 +15,13 @@ EditorBuildSettings:
     path: Assets/Scenes/plzhelpus.unity
     guid: 78d5e24cda2dbd640bdaf41b7f411d12
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 0}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1ea2727a95f1fc348af3031b7aa4fe8a,
+      type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 86e3ef35f5d12bb45a5bd259caa64901,
       type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: d44b5c5ad3cc14f49908a64c422a1c1d,
       type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5945fc54126fb714c9655a450b105861,
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: dc2c65f5f7a72f34a81792b00781ee76,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 021ce004111c4ad4993d94234a61318b,
       type: 2}

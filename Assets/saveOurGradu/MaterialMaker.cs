@@ -21,7 +21,7 @@ public class MaterialMaker : MonoBehaviour
 
     public string ReadTextFile()
     {
-        AssetDatabase.Refresh();
+      //  AssetDatabase.Refresh();
         string imagePath = File.ReadAllText(TxtPath);
         UnityEngine.Debug.Log(imagePath);
         return imagePath;
@@ -42,21 +42,7 @@ public class MaterialMaker : MonoBehaviour
             MakeMat(baseTexture, normalTexture);
         }
     }
-    public void ChangeTextureShapeNormalmap(Texture2D texture)
-    {
-
-        string assetPath = AssetDatabase.GetAssetPath(texture);
-        if (!string.IsNullOrEmpty(assetPath))
-        {
-            TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
-            if (importer != null)
-            {
-                importer.textureType = TextureImporterType.NormalMap;
-                importer.SaveAndReimport();
-            }
-        }
-
-    }
+   
 
     void MakeMat(Texture2D Base, Texture2D Normal)
     {
@@ -79,9 +65,9 @@ public class MaterialMaker : MonoBehaviour
             copiedMat.EnableKeyword("_NORMALMAP");
         }
         string path = "Assets/Resources/Materials/copied.mat";
-        AssetDatabase.CreateAsset(copiedMat, path);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+        //AssetDatabase.CreateAsset(copiedMat, path);
+        //AssetDatabase.SaveAssets();
+        //AssetDatabase.Refresh();
 
         // 임시로 메모리에만 저장
         //GetComponent<Renderer>().material = copiedMat;
