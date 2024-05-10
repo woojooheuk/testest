@@ -5,12 +5,23 @@ using UnityEngine.UI;
 using System.IO;
 using NativeGalleryNamespace;
 using Firebase.Storage;
-
+using Firebase;
 public class LoadGallery : MonoBehaviour
 {
     public RawImage photoDisplay;
 
     FirebaseStorage storage;
+
+    void Start()
+    {
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            if (task.Result == DependencyStatus.Available)
+                storage = FirebaseStorage.DefaultInstance;
+            else
+                Debug.LogError("Failed to initialize Firebase Storage");
+        });
+    }
     public void GetPhotoFromGallery()
     {
         NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
@@ -47,7 +58,7 @@ public class LoadGallery : MonoBehaviour
 
         byte[] imageBytes = File.ReadAllBytes(imagePath);
 
-        StorageReference imageRef = storage.GetReference(imageName);
+        StorageReference imageRef = storage.GetReference("base").Child(imageName);
 
         var uploadTask = imageRef.PutBytesAsync(imageBytes);
 

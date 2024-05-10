@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8294287a3af4245939777474bd1a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalMat: {fileID: 2100000, guid: 8ee304006ac81ba418d52797ded26f77, type: 2}
 --- !u!1 &263989529 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8591937706758677719, guid: d86c36db82b7bb7489e5c348ef333fc9,
@@ -1328,9 +1329,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489910467}
-        m_TargetAssemblyTypeName: firebaseimage, Assembly-CSharp
-        m_MethodName: GetImageURL
+      - m_Target: {fileID: 234793465}
+        m_TargetAssemblyTypeName: MaterialMaker, Assembly-CSharp
+        m_MethodName: LoadImages
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2409,6 +2410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8294287a3af4245939777474bd1a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalMat: {fileID: 0}
 --- !u!23 &1471845148
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -1,78 +1,96 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using UnityEngine.UI;
-using System.IO;
-
+using UnityEngine.Networking;
+using System;
+using Firebase.Storage;
+using Firebase;
 public class MaterialMaker : MonoBehaviour
 {
-    private Material originalMat;
+    public Material originalMat;
     private Texture2D baseTexture;
     private Texture2D normalTexture;
-    private int set = 0;
-    private string TxtPath = "Assets/Resources/TxtPath.txt";
-    // Start is called before the first frame update
 
+    FirebaseStorage storage;
+    StorageReference storageReference;
+
+    /*
     private void Start()
     {
-        Setting();
-    }
-
-    public string ReadTextFile()
-    {
-      //  AssetDatabase.Refresh();
-        string imagePath = File.ReadAllText(TxtPath);
-        UnityEngine.Debug.Log(imagePath);
-        return imagePath;
-    }
-
-    public void Setting()
-    {
-        if (set == 0)
+        // Firebase 초기화
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
-            string ImagePath = ReadTextFile();
+            if (task.Result == DependencyStatus.Available)
+            {
+                
+                Debug.Log("Firebase initialized successfully.");
 
-            originalMat = Resources.Load<Material>("Materials/ChangeLightMaterial");
-            //�ؿ� �̹��� �ּҵ� ����ȭ ��ų��
-            baseTexture = Resources.Load<Texture2D>(ImagePath);
-            normalTexture = Resources.Load<Texture2D>(ImagePath + "_normal");
-           // ChangeTextureShapeNormalmap(normalTexture);
+                // Firebase Storage에서 이미지 다운로드 및 메테리얼에 적용
+                LoadImages();
+            }
+            else
+            {
+                Debug.LogError("Failed to initialize Firebase.");
+            }
+        });
+    }
+    */
+    public void LoadImages()
+    {
+        storage = FirebaseStorage.DefaultInstance;
+        storageReference = storage.GetReference("gs://graduation-5bbb7.appspot.com");
+        DownloadImage("base/plz.jpg", "baseMap");
+        //DownloadImage("normal/plz.jpg", "normalMap");
+    }
 
-            MakeMat(baseTexture, normalTexture);
+    void DownloadImage(string imagePath, string mapType)
+    {
+        StorageReference imageRef = storageReference.Child(imagePath);
+
+        imageRef.GetDownloadUrlAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogError("Failed to get download URL: " + task.Exception);
+                return;
+            }
+
+            Uri imageUrl = task.Result;
+
+            // 이미지를 다운로드하고 메테리얼에 적용
+            if (imageUrl == null)
+            {
+                Debug.LogError("Download URL is null.");
+                return;
+            }
+            StartCoroutine(LoadImageFromUrl(imageUrl, mapType));
+        });
+    }
+
+    IEnumerator LoadImageFromUrl(Uri url, string mapType)
+    {
+        using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Failed to download image: " + www.error);
+            }
+            else
+            {
+                Texture2D texture = DownloadHandlerTexture.GetContent(www);
+
+                // 메테리얼에 텍스쳐를 적용
+                if (mapType == "baseMap")
+                {
+                    originalMat.SetTexture("_BaseMap", texture);
+                }
+                else if (mapType == "normalMap")
+                {
+                    originalMat.SetTexture("_BumpMap", texture);
+                    originalMat.EnableKeyword("_NORMALMAP");
+                }
+            }
         }
     }
-   
-
-    void MakeMat(Texture2D Base, Texture2D Normal)
-    {
-        if (originalMat == null)
-        {
-            Debug.LogError("Original material is not assigned.");
-            return;
-        }
-
-        Material copiedMat = new Material(originalMat);
-
-        copiedMat.name = "RelightExample";
-
-        if (baseTexture != null)
-            copiedMat.SetTexture("_BaseMap", Base);
-
-        if (normalTexture != null)
-        {
-            copiedMat.SetTexture("_BumpMap", Normal);
-            copiedMat.EnableKeyword("_NORMALMAP");
-        }
-        string path = "Assets/Resources/Materials/copied.mat";
-        //AssetDatabase.CreateAsset(copiedMat, path);
-        //AssetDatabase.SaveAssets();
-        //AssetDatabase.Refresh();
-
-        // 임시로 메모리에만 저장
-        //GetComponent<Renderer>().material = copiedMat;
-
-        set = 1;
-    }
-
 }
