@@ -12,8 +12,8 @@ Changed_script_dir = script_dir.replace("\\", "/")
 with open(Txtfile_path, 'r') as file:
     lines = file.readlines()
 #용호가 갤러리에서 값을 어떻게 넘겨주는지 보고 변경할 것
-imagePath = Changed_script_dir + "/" + lines[0] + ".jpg"
-
+#imagePath = Changed_script_dir + "/" + lines[0] + ".jpg"
+imagePath = "C:/Users/10Group/Documents/GitHub/testest/Assets/Resources/Images/qwe.jpeg"
 print(imagePath)
 divide = imagePath.split('.')
 if not os.path.exists(divide[0] + "_normal." + divide[1]):
