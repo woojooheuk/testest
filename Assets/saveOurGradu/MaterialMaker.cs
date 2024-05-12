@@ -7,12 +7,14 @@ using Firebase;
 public class MaterialMaker : MonoBehaviour
 {
     public Material originalMat;
-    private Texture2D baseTexture;
-    private Texture2D normalTexture;
 
     FirebaseStorage storage;
     StorageReference storageReference;
-
+    private static string imagename;
+    public static void getName(string name)
+    {
+        imagename = name;
+    }
     /*
     private void Start()
     {
@@ -37,16 +39,17 @@ public class MaterialMaker : MonoBehaviour
     public void LoadImages()
     {
         storage = FirebaseStorage.DefaultInstance;
-        storageReference = storage.GetReference("gs://graduation-5bbb7.appspot.com");
-        DownloadImage("base/plz.jpg", "baseMap");
-        //DownloadImage("normal/plz.jpg", "normalMap");
+        
+        Debug.Log(imagename);
+        DownloadImage("base/"+imagename, "baseMap");
+        //DownloadImage("normal/"+imagename, "normalMap");
     }
 
     void DownloadImage(string imagePath, string mapType)
     {
-        StorageReference imageRef = storageReference.Child(imagePath);
-
-        imageRef.GetDownloadUrlAsync().ContinueWith(task =>
+        storageReference = storage.GetReference(imagePath);
+        Debug.Log(storageReference);
+        storageReference.GetDownloadUrlAsync().ContinueWith(task =>
         {
             if (task.IsFaulted || task.IsCanceled)
             {

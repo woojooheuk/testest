@@ -11,7 +11,7 @@ public class LoadGallery : MonoBehaviour
     public RawImage photoDisplay;
 
     FirebaseStorage storage;
-
+    /*
     void Start()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -21,9 +21,11 @@ public class LoadGallery : MonoBehaviour
             else
                 Debug.LogError("Failed to initialize Firebase Storage");
         });
-    }
+    }*/
+
     public void GetPhotoFromGallery()
     {
+        storage = FirebaseStorage.DefaultInstance;
         NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
         {
             if (path != null)
@@ -60,6 +62,7 @@ public class LoadGallery : MonoBehaviour
 
         StorageReference imageRef = storage.GetReference("base").Child(imageName);
 
+        
         var uploadTask = imageRef.PutBytesAsync(imageBytes);
 
         yield return new WaitUntil(() => uploadTask.IsCompleted);
@@ -68,5 +71,8 @@ public class LoadGallery : MonoBehaviour
             Debug.LogError("Failed to upload image: " + uploadTask.Exception);
         else
             Debug.Log("Image uploaded complete");
+
+        MaterialMaker.getName(imageName);
+        
     }
 }

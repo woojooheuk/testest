@@ -736,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 376248626}
-  - component: {fileID: 376248625}
+  - component: {fileID: 376248627}
   m_Layer: 0
   m_Name: LoadManager
   m_TagString: Untagged
@@ -744,19 +744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &376248625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376248624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da03006f009662c4a9ffda2f43146f1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photoDisplay: {fileID: 1976743049}
 --- !u!4 &376248626
 Transform:
   m_ObjectHideFlags: 0
@@ -772,6 +759,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376248627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376248624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da03006f009662c4a9ffda2f43146f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photoDisplay: {fileID: 1976743049}
 --- !u!1 &618327164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1197,6 @@ GameObject:
   m_Component:
   - component: {fileID: 925017649}
   - component: {fileID: 925017650}
-  - component: {fileID: 925017651}
   m_Layer: 0
   m_Name: MakeNormalMap
   m_TagString: Untagged
@@ -1232,20 +1231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5d9771e2168f448bd3a3be99a9b56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &925017651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925017647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0734012d90fcafd4faf839c13aedd1f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  Plane: {fileID: 0}
 --- !u!1 &969770531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,51 +2438,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1489910466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1489910468}
-  - component: {fileID: 1489910467}
-  m_Layer: 0
-  m_Name: firebase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1489910467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489910466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92c6cdcd17195e4aa9f4700b3836c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rawImage: {fileID: 1976743049}
---- !u!4 &1489910468
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489910466}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2242.4, y: 700.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1573241140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2904,7 +2844,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 376248625}
+      - m_Target: {fileID: 376248627}
         m_TargetAssemblyTypeName: LoadGallery, Assembly-CSharp
         m_MethodName: GetPhotoFromGallery
         m_Mode: 1
@@ -2915,7 +2855,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1826601762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3312,7 +3252,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 234793465}
         m_TargetAssemblyTypeName: MaterialMaker, Assembly-CSharp
-        m_MethodName: Setting
+        m_MethodName: LoadImages
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4035,7 +3975,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c56c4c23d1f9c0242a12e8d916c7b43a, type: 2}
+  - {fileID: 2100000, guid: 8ee304006ac81ba418d52797ded26f77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4236,5 +4176,4 @@ SceneRoots:
   - {fileID: 234793464}
   - {fileID: 28020999}
   - {fileID: 985337013}
-  - {fileID: 1489910468}
   - {fileID: 376248626}

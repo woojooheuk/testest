@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Material_Controller : MonoBehaviour
 {
-    private string CopiedMatPath = "Materials/copied";
+    private string CopiedMatPath = "Materials/ChangeLightMaterial";
     public GameObject But;
     public void ChangeMat0()
     {
