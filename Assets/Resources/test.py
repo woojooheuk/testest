@@ -2,23 +2,56 @@ import os
 from PIL import Image
 from imaginairy_normal_map.model import create_normal_map_pil_img
 import firebase_admin
-script_dir = os.path.dirname(os.path.realpath(__file__))
+from firebase_admin import credentials, storage
+from flask import Flask, request, jsonify
+import io
+import traceback
 
-Txtfile_name = "TxtPath.txt"
-Txtfile_path = os.path.join(script_dir, Txtfile_name)
+cred = credentials.Certificate("C:/Users/dnheu/Downloads/graduation-5bbb7-firebase-adminsdk-y7md4-14930d910c.json")
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'graduation-5bbb7.appspot.com'
+})
+bucket = storage.bucket()
 
-Changed_script_dir = script_dir.replace("\\", "/")
+app = Flask(__name__)
 
-with open(Txtfile_path, 'r') as file:
-    lines = file.readlines()
-#용호가 갤러리에서 값을 어떻게 넘겨주는지 보고 변경할 것
-#imagePath = Changed_script_dir + "/" + lines[0] + ".jpg"
-imagePath = "D:/Minecraft_Plugins/testest/Assets/Resources/Images/qwe.jpeg"
-print(imagePath)
-divide = imagePath.split('.')
-if not os.path.exists(divide[0] + "_normal." + divide[1]):
-    #노말맵이 이미 있으면 안만들고 파이썬 끝나게 수정할것
-    img = Image.open(imagePath) #원본
-    normal_img = create_normal_map_pil_img(img)
-    normal_img.save(divide[0] + "_normal." + divide[1])
-    print("excute")
+def makeNormalMap(image_data):
+    try:
+        img = Image.open(io.BytesIO(image_data))
+        normal_img = create_normal_map_pil_img(img)
+
+        output_buffer = io.BytesIO()
+        normal_img.save(output_buffer, format='PNG')
+        output_buffer.seek(0)
+
+        return output_buffer
+    
+    except Exception as e:
+        print("Error: ", e)
+        return None
+
+@app.route('/process_image', methods=['POST'])
+def process_image():
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image uploaded'}), 400
+    
+    image_file = request.files['image']
+    image_data = image_file.read()
+
+    try:
+        output_buffer = makeNormalMap(image_data)
+        
+        if output_buffer:
+            blob = bucket.blob("normal/normal_image.png")
+            blob.upload_from_file(output_buffer, content_type='image/png')
+            
+            return jsonify({'processed_image_url': blob.public_url}), 200
+        else:
+            return jsonify({'error': 'Failed to process the image'}), 500
+        
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+    
+if __name__ == '__main__':
+    app.run(debug=True)

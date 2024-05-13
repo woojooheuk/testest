@@ -73,6 +73,6 @@ public class LoadGallery : MonoBehaviour
             Debug.Log("Image uploaded complete");
 
         MaterialMaker.getName(imageName);
-        
+        Request.getName(imageName);
     }
 }
