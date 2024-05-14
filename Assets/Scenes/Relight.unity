@@ -1373,9 +1373,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234793465}
-        m_TargetAssemblyTypeName: MaterialMaker, Assembly-CSharp
-        m_MethodName: LoadImages
+      - m_Target: {fileID: 819306980}
+        m_TargetAssemblyTypeName: Request, Assembly-CSharp
+        m_MethodName: Startasdsad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

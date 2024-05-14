@@ -42,7 +42,7 @@ public class MaterialMaker : MonoBehaviour
         
         Debug.Log(imagename);
         DownloadImage("base/"+imagename, "baseMap");
-        //DownloadImage("normal/"+imagename, "normalMap");
+        DownloadImage("normal/"+imagename, "normalMap");
     }
 
     void DownloadImage(string imagePath, string mapType)
