@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 import io
 import traceback
 
-cred = credentials.Certificate("C:/Users/dnheu/Downloads/graduation-5bbb7-firebase-adminsdk-y7md4-14930d910c.json")
+cred = credentials.Certificate("C:/Users/10Group/Downloads/graduation-5bbb7-firebase-adminsdk-y7md4-03f49cf624.json")
 firebase_admin.initialize_app(cred, {
     'storageBucket': 'graduation-5bbb7.appspot.com'
 })
