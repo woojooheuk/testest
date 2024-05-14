@@ -4,9 +4,10 @@ using UnityEngine.Networking;
 using System.IO;
 using Firebase;
 using Firebase.Storage;
+using System.Net;
 public class Request : MonoBehaviour {
 
-    public string serverUrl = "http://127.0.0.1:5000/process_image";
+    public string serverUrl = "http://124.54.77.48:5000/process_image";
     public static string imagePath;
 
     FirebaseStorage storage;
@@ -18,6 +19,8 @@ public class Request : MonoBehaviour {
     }
     public void Startasdsad()
     {
+        //ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
         StartCoroutine(DownloadImage());
     }
 
@@ -59,16 +62,19 @@ public class Request : MonoBehaviour {
         form.AddBinaryData("image", imageBytes, "image.jpg", "image/jpeg");
 
         UnityWebRequest www = UnityWebRequest.Post(serverUrl, form);
+        Debug.Log("why?asdf");
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
+        {
             Debug.LogError("Failed to upload image: " + www.error);
+            Debug.LogError("Failed to upload image: " + www.result);
+        }
         else
         {
             Debug.Log("Image uploaded successfully");
-            Debug.Log("Response: " + www.downloadHandler.text);
 
-            if(!www.downloadHandler.text.Contains("Failed to process the image"))
+            if (!www.downloadHandler.text.Contains("Failed to process the image"))
             {
                 Debug.Log("deleted complete");
             }
