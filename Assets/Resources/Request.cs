@@ -4,8 +4,8 @@ using UnityEngine.Networking;
 using System.IO;
 using Firebase;
 using Firebase.Storage;
-public class Request : MonoBehaviour
-{
+public class Request : MonoBehaviour {
+
     public string serverUrl = "http://127.0.0.1:5000/process_image";
     public static string imagePath;
 
@@ -18,7 +18,7 @@ public class Request : MonoBehaviour
     }
     public void Startasdsad()
     {
-            StartCoroutine(DownloadImage());
+        StartCoroutine(DownloadImage());
     }
 
     IEnumerator DownloadImage()
