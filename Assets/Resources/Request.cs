@@ -7,7 +7,7 @@ using Firebase.Storage;
 using System.Net;
 public class Request : MonoBehaviour {
 
-    public string serverUrl = "http://124.54.77.48:5000/process_image";
+    private string serverUrl = "http://43.200.176.196:5000/process_image";
     public static string imagePath;
 
     FirebaseStorage storage;

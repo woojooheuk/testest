@@ -1,4 +1,3 @@
-import os
 from PIL import Image
 from imaginairy_normal_map.model import create_normal_map_pil_img
 import firebase_admin
@@ -7,7 +6,7 @@ from flask import Flask, request, jsonify
 import io
 import traceback
 
-cred = credentials.Certificate("C:/Users/10Group/Downloads/graduation-5bbb7-firebase-adminsdk-y7md4-03f49cf624.json")
+cred = credentials.Certificate("C:/Users/dnheu/Downloads/graduation-5bbb7-firebase-adminsdk-y7md4-14930d910c.json")
 firebase_admin.initialize_app(cred, {
     'storageBucket': 'graduation-5bbb7.appspot.com'
 })
@@ -21,7 +20,7 @@ def makeNormalMap(image_data):
         normal_img = create_normal_map_pil_img(img)
 
         output_buffer = io.BytesIO()
-        normal_img.save(output_buffer, format='PNG')
+        normal_img.save(output_buffer, format='jpg')
         output_buffer.seek(0)
 
         return output_buffer
@@ -29,7 +28,7 @@ def makeNormalMap(image_data):
     except Exception as e:
         print("Error: ", e)
         return None
-
+        
 @app.route('/process_image', methods=['POST'])
 def process_image():
     if 'image' not in request.files:
