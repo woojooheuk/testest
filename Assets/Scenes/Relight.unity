@@ -658,7 +658,6 @@ GameObject:
   m_Component:
   - component: {fileID: 376248626}
   - component: {fileID: 376248627}
-  - component: {fileID: 376248628}
   m_Layer: 0
   m_Name: LoadManager
   m_TagString: Untagged
@@ -694,19 +693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photoDisplay: {fileID: 1976743049}
---- !u!114 &376248628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376248624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d53bb239d8ae684c84bbbb8192df02a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverUrl: http://127.0.0.1:5000/process_image
 --- !u!1 &618327164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819306981}
-  - component: {fileID: 819306980}
+  - component: {fileID: 819306982}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1011,19 +997,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &819306980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819306979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d53bb239d8ae684c84bbbb8192df02a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverUrl: http://127.0.0.1:5000/process_image
 --- !u!4 &819306981
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,6 +1012,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819306982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819306979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d53bb239d8ae684c84bbbb8192df02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1279,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 819306980}
+      - m_Target: {fileID: 819306982}
         m_TargetAssemblyTypeName: Request, Assembly-CSharp
         m_MethodName: Startasdsad
         m_Mode: 1
