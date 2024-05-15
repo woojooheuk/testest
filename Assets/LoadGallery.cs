@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using NativeGalleryNamespace;
+//using NativeGalleryNamespace;
 using Firebase.Storage;
 using Firebase;
 public class LoadGallery : MonoBehaviour
