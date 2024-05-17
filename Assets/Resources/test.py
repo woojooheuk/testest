@@ -36,13 +36,14 @@ def process_image():
     
     image_file = request.files['image']
     image_data = image_file.read()
-
+    original_filename = image_file.filename
+    
     try:
         output_buffer = makeNormalMap(image_data)
         
         if output_buffer:
-            blob = bucket.blob("normal/normal_image.png")
-            blob.upload_from_file(output_buffer, content_type='image/png')
+            blob = bucket.blob(f"normal/{original_filename}")
+            blob.upload_from_file(output_buffer, content_type = image_file.content_type)
             
             return jsonify({'processed_image_url': blob.public_url}), 200
         else:

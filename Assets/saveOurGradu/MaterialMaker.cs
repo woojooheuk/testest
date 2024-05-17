@@ -90,8 +90,9 @@ public class MaterialMaker : MonoBehaviour
                 }
                 else if (mapType == "normalMap")
                 {
-                    originalMat.SetTexture("_BumpMap", texture);
                     originalMat.EnableKeyword("_NORMALMAP");
+                    originalMat.SetTexture("_BumpMap", texture);
+                    
                 }
             }
         }

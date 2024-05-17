@@ -6,9 +6,8 @@ using Firebase;
 using Firebase.Storage;
 using System.Net;
 public class Request : MonoBehaviour {
-    
-    private string serverUrl = "http://124.54.77.48:5000/process_image";
 
+    private string serverUrl = "http://124.54.77.48:80/process_image";
     public static string imagePath;
 
     FirebaseStorage storage;
@@ -16,7 +15,7 @@ public class Request : MonoBehaviour {
 
     public static void getName(string name)
     {
-        imagePath = "base/" + name;
+        imagePath =  name;
     }
     public void Startasdsad()
     {
@@ -27,7 +26,7 @@ public class Request : MonoBehaviour {
     IEnumerator DownloadImage()
     {
         storage = FirebaseStorage.DefaultInstance;
-        storageReference = storage.GetReference(imagePath);
+        storageReference = storage.GetReference("base/"+imagePath);
         var downloadTask = storageReference.GetDownloadUrlAsync();
         yield return new WaitUntil(() => downloadTask.IsCompleted);
 
@@ -59,10 +58,10 @@ public class Request : MonoBehaviour {
     {
         WWWForm form = new WWWForm();
 
-        form.AddBinaryData("image", imageBytes, "image.jpg", "image/jpeg");
+        form.AddBinaryData("image", imageBytes, imagePath);
 
         UnityWebRequest www = UnityWebRequest.Post(serverUrl, form);
-        Debug.Log("why?asdf");
+
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
@@ -76,7 +75,7 @@ public class Request : MonoBehaviour {
 
             if (!www.downloadHandler.text.Contains("Failed to process the image"))
             {
-                Debug.Log("deleted complete");
+                Debug.Log("delete complete");
             }
         }
     }
