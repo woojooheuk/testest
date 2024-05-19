@@ -14,6 +14,10 @@ bucket = storage.bucket()
 
 app = Flask(__name__)
 
+def file_exists_in_firebase(filename):
+    blob = bucket.blob("normal/"+filename)
+    return blob.exists()
+
 def makeNormalMap(image_data):
     try:
         img = Image.open(io.BytesIO(image_data))
@@ -28,7 +32,7 @@ def makeNormalMap(image_data):
     except Exception as e:
         print("Error: ", e)
         return None
-        
+    
 @app.route('/process_image', methods=['POST'])
 def process_image():
     if 'image' not in request.files:
@@ -38,6 +42,9 @@ def process_image():
     image_data = image_file.read()
     original_filename = image_file.filename
     
+    if(file_exists_in_firebase(original_filename)):
+        return jsonify({"success": "image already exist"})
+        
     try:
         output_buffer = makeNormalMap(image_data)
         
