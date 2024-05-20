@@ -59,12 +59,7 @@ public class Request : MonoBehaviour {
             StartCoroutine(UploadAndDeleteImage(def, imageBytes));
         }
     }
-    //자준이 필요한 거 내가 갤러리에서 선택한 이미지
-    //로드 갤러리. 이미지 업로드
-    //리퀘스트 = 채호 서버에 이미지 보내고 요청
-    //리퀘스트 버튼을 둘로. 함수 나눠서 지정.
-    //csv 요청 버튼 누르면 이미지 다운 및 서버에 보내
-    //눌리는 버튼에 따라 /process_image 인지 /recommend인지 정해
+    //용호 씬 옮기는 스크립트 받아서 버튼에 적용 후내가 직접 작성
     IEnumerator UploadAndDeleteImage(string def, byte[] imageBytes)
     {
         WWWForm form = new WWWForm();
