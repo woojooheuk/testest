@@ -7,7 +7,7 @@ using Firebase.Storage;
 using System.Net;
 public class Request : MonoBehaviour {
 
-    private string serverUrl = "http://124.54.77.48:80/process_image";
+    private string serverUrl = "http://124.54.77.48:80";
     public static string imagePath;
 
     FirebaseStorage storage;
@@ -20,10 +20,15 @@ public class Request : MonoBehaviour {
     public void Startasdsad()
     {
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-        StartCoroutine(DownloadImage());
+        StartCoroutine(DownloadImage("/process_image"));
     }
 
-    IEnumerator DownloadImage()
+    public void startRec()
+    {
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        StartCoroutine(DownloadImage("/recommend"));
+    }
+    IEnumerator DownloadImage(string def)
     {
         storage = FirebaseStorage.DefaultInstance;
         storageReference = storage.GetReference("base/"+imagePath);
@@ -51,16 +56,22 @@ public class Request : MonoBehaviour {
             Texture2D texture = DownloadHandlerTexture.GetContent(www);
             byte[] imageBytes = texture.EncodeToPNG();
 
-            StartCoroutine(UploadAndDeleteImage(imageBytes));
+            StartCoroutine(UploadAndDeleteImage(def, imageBytes));
         }
     }
-    IEnumerator UploadAndDeleteImage(byte[] imageBytes)
+    //자준이 필요한 거 내가 갤러리에서 선택한 이미지
+    //로드 갤러리. 이미지 업로드
+    //리퀘스트 = 채호 서버에 이미지 보내고 요청
+    //리퀘스트 버튼을 둘로. 함수 나눠서 지정.
+    //csv 요청 버튼 누르면 이미지 다운 및 서버에 보내
+    //눌리는 버튼에 따라 /process_image 인지 /recommend인지 정해
+    IEnumerator UploadAndDeleteImage(string def, byte[] imageBytes)
     {
         WWWForm form = new WWWForm();
 
         form.AddBinaryData("image", imageBytes, imagePath);
 
-        UnityWebRequest www = UnityWebRequest.Post(serverUrl, form);
+        UnityWebRequest www = UnityWebRequest.Post(serverUrl+def, form);
 
         yield return www.SendWebRequest();
 

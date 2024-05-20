@@ -74,5 +74,6 @@ public class LoadGallery : MonoBehaviour
 
         MaterialMaker.getName(imageName);
         Request.getName(imageName);
+        test_url.getName(imageName);
     }
 }

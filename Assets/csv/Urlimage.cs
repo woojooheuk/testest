@@ -11,21 +11,14 @@ using UnityEngine.Networking;
 public class Urlimage : MonoBehaviour
 {
     public RawImage rawImage;
-    void Start()
+    public string url = "data[i][\"image\"].ToString()";
+    public void Startfdhj()
     {
-        List<Dictionary<string,object>> data = CSVReader.Read("test_list");
+        List<Dictionary<string,object>> data = CSVReader.Read("test_list2");
         StartCoroutine(GetTexture(url));
     }
-    public string url = "data[i][\"image\"].ToString()";
     
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     IEnumerator GetTexture(string url)
     {
 
