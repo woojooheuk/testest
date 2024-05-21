@@ -60,6 +60,7 @@ public class test_url : MonoBehaviour
         while ((line = reader.ReadLine()) != null)
         {
             string[] values = line.Split(',');
+
             if (values.Length >= 2)
             {
                 imgUrl.Add(values[0]);
