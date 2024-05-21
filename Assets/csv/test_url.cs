@@ -65,7 +65,7 @@ public class test_url : MonoBehaviour
                 i++;
             }
         }
-
+        Urlimage.getUrl(imgUrl, link);
         // 첫 번째 20개의 데이터를 출력
         for (int j = 1; j < 21; j++)
         {
