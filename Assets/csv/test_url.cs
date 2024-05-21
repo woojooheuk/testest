@@ -12,6 +12,8 @@ public class test_url : MonoBehaviour
 {
     private FirebaseStorage storage;
     public static string imageName;
+    public GameObject prefabs;
+    public RectTransform contentTransform;
     //파이썬 실행 된 뒤 실행해야하는 코드
     public static void getName(string name)
     {
