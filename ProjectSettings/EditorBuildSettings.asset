@@ -5,24 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: f22223db5c6b1ff4ebcb08d9166b626f
+  - enabled: 1
+    path: Assets/Scenes/AR.unity
+    guid: e2bd4b341d1484a569aaee5d496d6689
   - enabled: 1
     path: Assets/Scenes/Relight.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/plzhelpus.unity
-    guid: 78d5e24cda2dbd640bdaf41b7f411d12
   - enabled: 1
     path: Assets/Scenes/csv.unity
     guid: 87429b5f6baffc14188ed512571901d6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1ea2727a95f1fc348af3031b7aa4fe8a,
       type: 2}
-    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 86e3ef35f5d12bb45a5bd259caa64901,
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c5d2f86e1e405bb44864751b1b5c88f2,
       type: 2}
-    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: d44b5c5ad3cc14f49908a64c422a1c1d,
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 8af982a1c873f854da6fcc2899e7ab45,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: dc2c65f5f7a72f34a81792b00781ee76,
       type: 2}
